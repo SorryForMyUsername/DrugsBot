@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Domain.Validators;
+﻿using Domain.Validators;
+using FluentValidation;
 
 namespace Domain.Entities
 {
@@ -8,7 +8,7 @@ namespace Domain.Entities
     /// </summary>
     public class Drug : BaseEntity
     {
-        public Drug(string name, string manufacturer, string countryCodeId, Country country)
+        public Drug(string name, string manufacturer, string? countryCodeId, Country country)
         {
             Name = name;
             Manufacturer = manufacturer;
@@ -31,7 +31,7 @@ namespace Domain.Entities
         /// <summary>
         /// Код страны производителя.
         /// </summary>
-        public string CountryCodeId { get; private set; }
+        public string? CountryCodeId { get; private set; }
         
         // Навигационное свойство для связи с объектом Country
         public Country Country { get; private set; }

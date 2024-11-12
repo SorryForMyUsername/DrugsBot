@@ -1,4 +1,6 @@
-﻿using Domain.ValueObjects;
+﻿using FluentValidation;
+using Domain.Validators;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -7,11 +9,16 @@ namespace Domain.Entities
     /// </summary>
     public class DrugStore : BaseEntity
     {
-        public DrugStore(string drugNetwork, int number, Address address)
+        public DrugStore(string drugNetwork, int number, Address address, DrugNetwork network)
         {
             DrugNetwork = drugNetwork;
             Number = number;
             Address = address;
+            Network = network;
+            
+            Validate();
+            
+            network.DrugStores.Add(this);
         }
 
         /// <summary>
@@ -28,8 +35,24 @@ namespace Domain.Entities
         /// Адрес аптеки.
         /// </summary>
         public Address Address { get; private set; }
+
+        // Навигационное свойство для связи с DrugNetwork
+        public DrugNetwork Network { get; private set; }
         
         // Навигационное свойство для связи с DrugItem
         public ICollection<DrugItem> DrugItems { get; private set; } = new List<DrugItem>();
+        
+        private void Validate()
+        {
+            var validator = new DrugStoreValidator();
+            var result = validator.Validate(this);
+
+            if (!result.IsValid)
+            {
+                var errors = string.Join(" ", result.Errors.Select(x => x.ErrorMessage));
+                
+                throw new ValidationException(errors);
+            }
+        }
     }
 }

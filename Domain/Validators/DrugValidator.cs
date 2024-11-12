@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using System.Reflection;
+using System.Text.RegularExpressions;
+using FluentValidation;
 using Domain.Entities;
 
 namespace Domain.Validators;
@@ -10,10 +12,16 @@ public class DrugValidator : AbstractValidator<Drug>
         RuleFor(d => d.Name)
             .NotNull().WithMessage(ValidationMessage.NotNull)
             .NotEmpty().WithMessage(ValidationMessage.NotEmpty)
-            .Length(2, 28).WithMessage(ValidationMessage.WrongLength);
+            .Length(2, 150).WithMessage(ValidationMessage.WrongLength)
+            .Matches(@"^(\w|\s)*$").WithMessage(ValidationMessage.WrongFormat);
+        RuleFor(d => d.Manufacturer)
+            .NotNull().WithMessage(ValidationMessage.NotNull)
+            .NotEmpty().WithMessage(ValidationMessage.NotEmpty)
+            .Length(2, 100).WithMessage(ValidationMessage.WrongLength)
+            .Matches(@"^[a-zA-Z -]*$").WithMessage(ValidationMessage.WrongFormat);
         RuleFor(d => d.CountryCodeId)
-            .Matches("");
-
-
+            .Matches("^[A-Z]{2}$").WithMessage(ValidationMessage.WrongFormat)
+            .Must(c => Country.Countries.Any(country => country.Code == c)).WithMessage(ValidationMessage.NotExistValue)
+            .When(d => d.CountryCodeId != null);
     }
 }
