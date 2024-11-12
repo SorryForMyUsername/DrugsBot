@@ -8,17 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c7e1fc0-0031-448f-b248-903977387285" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/BaseEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Country.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Drug.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/DrugItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/DrugStore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Validators/DrugValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Validators/ValidationMessage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/ValueObjects/Address.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/ValueObjects/BaseValueObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Entities/DrugNetwork.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Validators/CountryValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Validators/DrugItemValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Validators/DrugStoreValidator(Недоделан).cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/CountryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/DrugItemTests(Недоделан).cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/DrugStoreTests(Недоделан).cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/DrugTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Tests.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DrugsBot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DrugsBot/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Country.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Country.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Drug.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Drug.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/DrugItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/DrugItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/DrugStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/DrugStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Validators/DrugValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Validators/DrugValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Validators/ValidationMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Validators/ValidationMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/ValueObjects/Address.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/ValueObjects/Address.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DrugsBot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DrugsBot.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,31 +34,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SorryForMyUsername&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SorryForMyUsername/DrugsBot.git&quot;,
+    &quot;accountId&quot;: &quot;cb92047d-b268-4207-8357-3fa22787227c&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/135d867c4d4e51c04ef59bb0217b3148b1206070e29579a6ce187125a52bf54e/AbstractValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a514385271c27d5393137dcba5c029c2e2dfecc6f7539a6f6e1b9bd92bfaf/Country.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6297edad6c7a15b271bd3187293ba9fedea60887ba8c15ad91744aa479c/DefaultValidatorOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/79f53052824688f38131b685a19e3bd509a16e91d9428b9c25144dc51f674/Syntax.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dc8dad52475cb4478597ed9de029b8aacc1e4d022fbb4ad797286a26e3035b4/IRuleComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eec252cf40b8ff96a3a028a3eddc6ac8c0d3f385d85e6def3cfc7d63fbc5918e/DefaultValidatorExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2oUjv3gJwkCMUmYdW6q0OXLGv98" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;0c3f2092-5d78-4d99-b794-ab42f1fa34b7.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Domain" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -79,7 +118,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730931277729</updated>
-      <workItem from="1730931279140" duration="1251000" />
+      <workItem from="1730931279140" duration="1565000" />
+      <workItem from="1730977350731" duration="7429000" />
+      <workItem from="1731013174360" duration="12022000" />
+      <workItem from="1731181326556" duration="1414000" />
+      <workItem from="1731255697766" duration="15212000" />
+      <workItem from="1731279069463" duration="3746000" />
+      <workItem from="1731351198815" duration="19051000" />
+      <workItem from="1731370521396" duration="2158000" />
+      <workItem from="1731421719540" duration="3533000" />
     </task>
     <task id="LOCAL-00001" summary="Создание проекта">
       <option name="closed" value="true" />
@@ -97,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730931892819</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Создание проекта">
+      <option name="closed" value="true" />
+      <created>1730932581922</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730932581922</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
