@@ -18,7 +18,7 @@ public class CountryTests
     [Fact]
     public void TestName1()
     {
-        string expected = "Name не может быть NULL. Name не может быть пустым.";
+        string expected = "Поле Name является обязательным.";
 
         string actual = CatchCountryValidateException(null, "MD");
         
@@ -28,7 +28,7 @@ public class CountryTests
     [Fact]
     public void TestName2()
     {
-        string expected = "Name не может быть пустым. Name должен быть от 2 до 100.";
+        string expected = "Поле Name является обязательным. Поле Name должно содержать от 2 до 100 символов. Поле Name должно содержать только буквы и пробелы.";
 
         string actual = CatchCountryValidateException("", "MD");
         
@@ -38,7 +38,7 @@ public class CountryTests
     [Fact]
     public void TestName3()
     {
-        string expected = "Name должен быть от 2 до 100.";
+        string expected = "Поле Name должно содержать от 2 до 100 символов.";
 
         string actual = CatchCountryValidateException("M", "MD");
         
@@ -48,7 +48,7 @@ public class CountryTests
     [Fact]
     public void TestName4()
     {
-        string expected = "Name в неправильном формате.";
+        string expected = "Поле Name должно содержать только буквы и пробелы.";
 
         string actual = CatchCountryValidateException("Moldova 2", "MD");
         
@@ -58,7 +58,7 @@ public class CountryTests
     [Fact]
     public void TestName5()
     {
-        string expected = "Name должен быть от 2 до 100. Name в неправильном формате.";
+        string expected = "Поле Name должно содержать от 2 до 100 символов. Поле Name должно содержать только буквы и пробелы.";
 
         string actual = CatchCountryValidateException("0", "MD");
         
@@ -68,7 +68,7 @@ public class CountryTests
     [Fact]
     public void TestName6()
     {
-        string expected = "Name должен быть от 2 до 100.";
+        string expected = "Поле Name должно содержать от 2 до 100 символов.";
 
         string actual = CatchCountryValidateException("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "MD");
         
@@ -78,7 +78,7 @@ public class CountryTests
     [Fact]
     public void TestCode1()
     {
-        string expected = "0 exceptions.";
+        string expected = "Поле Code является обязательным. Поле Code должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchCountryValidateException("Moldova", null);
         
@@ -88,7 +88,7 @@ public class CountryTests
     [Fact]
     public void TestCode2()
     {
-        string expected = "Code должен иметь длину 2.";
+        string expected = "Поле Code должно содержать ровно 2 символов. Поле Code должно содержать только заглавные латинские буквы. Поле Code должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchCountryValidateException("Moldova", "M");
         
@@ -98,7 +98,7 @@ public class CountryTests
     [Fact]
     public void TestCode3()
     {
-        string expected = "Code в неправильном формате.";
+        string expected = "Поле Code должно содержать только заглавные латинские буквы. Поле Code должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchCountryValidateException("Moldova", "mD");
         
@@ -108,7 +108,7 @@ public class CountryTests
     [Fact]
     public void TestCode4()
     {
-        string expected = "Code должен иметь длину 2. Code в неправильном формате.";
+        string expected = "Поле Code должно содержать ровно 2 символов. Поле Code должно содержать только заглавные латинские буквы. Поле Code должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchCountryValidateException("Moldova", "$M4D");
         
