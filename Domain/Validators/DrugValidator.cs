@@ -1,27 +1,31 @@
 ﻿using System.Reflection;
-using System.Text.RegularExpressions;
 using FluentValidation;
 using Domain.Entities;
+using Domain.Primitives;
 
 namespace Domain.Validators;
 
-public class DrugValidator : AbstractValidator<Drug>
+public sealed class DrugValidator : AbstractValidator<Drug>
 {
-    public DrugValidator()
+    public DrugValidator(Func<string, bool> countryExistsFunc)
     {
+        // Валидация для Name
         RuleFor(d => d.Name)
-            .NotNull().WithMessage(ValidationMessage.NotNull)
-            .NotEmpty().WithMessage(ValidationMessage.NotEmpty)
-            .Length(2, 150).WithMessage(ValidationMessage.WrongLength)
-            .Matches(@"^(\w|\s)*$").WithMessage(ValidationMessage.WrongFormat);
-        RuleFor(d => d.Manufacturer)
-            .NotNull().WithMessage(ValidationMessage.NotNull)
-            .NotEmpty().WithMessage(ValidationMessage.NotEmpty)
-            .Length(2, 100).WithMessage(ValidationMessage.WrongLength)
-            .Matches(@"^[a-zA-Z -]*$").WithMessage(ValidationMessage.WrongFormat);
+            .NotEmpty().WithMessage(ValidationMessage.RequiredField)
+            .Length(2, 150).WithMessage(ValidationMessage.LengthField)
+            .Matches(@"^[A-Za-z0-9\s]+$").WithMessage(ValidationMessage.OnlyLettersDigitsAndSpaces);
+        
+        // Валидация для Manufacturer
+        RuleFor(d => d.Manufacturer)    
+            .NotEmpty().WithMessage(ValidationMessage.RequiredField)
+            .Length(2, 100).WithMessage(ValidationMessage.LengthField)
+            .Matches(@"^[A-Za-z\s\-]+$").WithMessage(ValidationMessage.OnlyLettersSpacesAndDashes);
+
+        // Валидация для CountryCodeId
         RuleFor(d => d.CountryCodeId)
-            .Matches("^[A-Z]{2}$").WithMessage(ValidationMessage.WrongFormat)
-            .Must(c => Country.Countries.Any(country => country.Code == c)).WithMessage(ValidationMessage.NotExistValue)
-            .When(d => d.CountryCodeId != null);
+            .NotEmpty().WithMessage(ValidationMessage.RequiredField)
+            .Length(2).WithMessage(ValidationMessage.ExactLengthField)
+            .Matches(@"^[A-Z]{2}$").WithMessage(ValidationMessage.OnlyUppercaseLetters)
+            .Must(countryExistsFunc).WithMessage(ValidationMessage.ValidCountryCode);
     }
 }

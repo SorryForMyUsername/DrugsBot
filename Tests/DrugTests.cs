@@ -18,7 +18,7 @@ public class DrugTests
     [Fact]
     public void TestName1()
     {
-        string expected = "Name должен быть от 2 до 150.";
+        string expected = "Поле Name должно содержать от 2 до 150 символов.";
 
         string actual = CatchDrugValidateException("D", "Manufacturer", "RU", new Country("Russian Federation", "RU"));
         
@@ -28,7 +28,7 @@ public class DrugTests
     [Fact]
     public void TestName2()
     {
-        string expected = "Name не может быть NULL. Name не может быть пустым.";
+        string expected = "Поле Name является обязательным.";
 
         string actual = CatchDrugValidateException(null, "Manufacturer", "RU", new Country("Russian Federation", "RU"));
         
@@ -38,7 +38,7 @@ public class DrugTests
     [Fact]
     public void TestName3()
     {
-        string expected = "Name не может быть пустым. Name должен быть от 2 до 150.";
+        string expected = "Поле Name является обязательным. Поле Name должно содержать от 2 до 150 символов. Поле Name должно содержать только буквы, цифры и пробелы.";
 
         string actual = CatchDrugValidateException("", "Manufacturer", "RU", new Country("Russian Federation", "RU"));
         
@@ -58,7 +58,7 @@ public class DrugTests
     [Fact]
     public void TestName5()
     {
-        string expected = "Name в неправильном формате.";
+        string expected = "Поле Name должно содержать только буквы, цифры и пробелы.";
 
         string actual = CatchDrugValidateException("(Drug)", "Manufacturer", "RU", new Country("Russian Federation", "RU"));
         
@@ -68,7 +68,7 @@ public class DrugTests
     [Fact]
     public void TestName6()
     {
-        string expected = "Name должен быть от 2 до 150. Name в неправильном формате.";
+        string expected = "Поле Name должно содержать от 2 до 150 символов. Поле Name должно содержать только буквы, цифры и пробелы.";
         Country russia = new Country("Russian Federation", "RU"); 
         
         string actual = CatchDrugValidateException("=", "Manufacturer", "RU", russia);
@@ -79,7 +79,7 @@ public class DrugTests
     [Fact]
     public void TestManufacturer1()
     {
-        string expected = "Manufacturer не может быть NULL. Manufacturer не может быть пустым.";
+        string expected = "Поле Manufacturer является обязательным.";
 
         string actual = CatchDrugValidateException("Drug", null, "RU", new Country("Russian Federation", "RU"));
         
@@ -89,7 +89,7 @@ public class DrugTests
     [Fact]
     public void TestManufacturer2()
     {
-        string expected = "Manufacturer не может быть пустым. Manufacturer должен быть от 2 до 100.";
+        string expected = "Поле Manufacturer является обязательным. Поле Manufacturer должно содержать от 2 до 100 символов. Поле Manufacturer должно содержать только буквы, пробелы и дефисы.";
 
         string actual = CatchDrugValidateException("Drug", "", "RU", new Country("Russian Federation", "RU"));
         
@@ -99,7 +99,7 @@ public class DrugTests
     [Fact]
     public void TestManufacturer3()
     {
-        string expected = "Manufacturer должен быть от 2 до 100.";
+        string expected = "Поле Manufacturer должно содержать от 2 до 100 символов.";
 
         string actual = CatchDrugValidateException("Drug", "m", "RU", new Country("Russian Federation", "RU"));
         
@@ -109,7 +109,7 @@ public class DrugTests
     [Fact]
     public void TestManufacturer4()
     {
-        string expected = "Manufacturer должен быть от 2 до 100. Manufacturer в неправильном формате.";
+        string expected = "Поле Manufacturer должно содержать от 2 до 100 символов. Поле Manufacturer должно содержать только буквы, пробелы и дефисы.";
 
         string actual = CatchDrugValidateException("Drug", "1", "RU", new Country("Russian Federation", "RU"));
         
@@ -129,7 +129,7 @@ public class DrugTests
     [Fact]
     public void TestManufacturer6()
     {
-        string expected = "Manufacturer в неправильном формате.";
+        string expected = "Поле Manufacturer должно содержать только буквы, пробелы и дефисы.";
 
         string actual = CatchDrugValidateException("Drug", "M a-n U-f a-C t-u r-3 r", "RU", new Country("Russian Federation", "RU"));
         
@@ -139,7 +139,7 @@ public class DrugTests
     [Fact]
     public void TestCountryCodeId1()
     {
-        string expected = "0 exceptions.";
+        string expected = "Поле Country Code Id является обязательным. Поле Country Code Id должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchDrugValidateException("Drug", "Manufacturer", null, new Country("Russian Federation", "RU"));
         
@@ -149,7 +149,7 @@ public class DrugTests
     [Fact]
     public void TestCountryCodeId2()
     {
-        string expected = "Country Code Id не существует со значением RY.";
+        string expected = "Поле Country Code Id должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchDrugValidateException("Drug", "Manufacturer", "RY", new Country("Russian Federation", "RU"));
         
@@ -160,11 +160,11 @@ public class DrugTests
     public void TestCountryCodeId3()
     {
         string expected = "0 exceptions.";
-        Country Canada = new Country("Canada", "CA");
-        Country China = new Country("China", "CL");
-        Country India = new Country("India", "IN");
+        Country Canada = new Country("United States of America", "US");
+        Country China = new Country("Germany", "DE");
+        Country India = new Country("France", "FR");
 
-        string actual = CatchDrugValidateException("Drug", "Manufacturer", "CL", new Country("Russian Federation", "RU"));
+        string actual = CatchDrugValidateException("Drug", "Manufacturer", "DE", new Country("Russian Federation", "DE"));
         
         Assert.Equal(expected, actual);
     }
@@ -172,7 +172,7 @@ public class DrugTests
     [Fact]
     public void TestCountryCodeId4()
     {
-        string expected = "Country Code Id в неправильном формате. Country Code Id не существует со значением r.";
+        string expected = "Поле Country Code Id должно содержать ровно 2 символов. Поле Country Code Id должно содержать только заглавные латинские буквы. Поле Country Code Id должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchDrugValidateException("Drug", "Manufacturer", "r", new Country("Russian Federation", "RU"));
         
@@ -182,7 +182,7 @@ public class DrugTests
     [Fact]
     public void TestCountryCodeId5()
     {
-        string expected = "Country Code Id в неправильном формате. Country Code Id не существует со значением RURU.";
+        string expected = "Поле Country Code Id должно содержать ровно 2 символов. Поле Country Code Id должно содержать только заглавные латинские буквы. Поле Country Code Id должно соответствовать существующему ISO-коду страны.";
 
         string actual = CatchDrugValidateException("Drug", "Manufacturer", "RURU", new Country("Russian Federation", "RU"));
         
@@ -197,7 +197,7 @@ public class DrugTests
     {
         try
         {
-            Drug d = new Drug(name, manufacturer, countryCodeId, country);
+            Drug d = new Drug(name, manufacturer, countryCodeId, country, s => ISO3166.Country.List.Any(c => c.TwoLetterCode == s));
             return "0 exceptions.";
         }
         catch(ValidationException ex)

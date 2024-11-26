@@ -1,21 +1,27 @@
-using System.Text.RegularExpressions;
+using Domain.Entities;
 using FluentValidation;
 using Domain.Entities;
+using Domain.Primitives;
 
 namespace Domain.Validators;
 
 public class CountryValidator : AbstractValidator<Country>
 {
+    private static readonly HashSet<string> ValidIsoCodes = ["US", "DE", "FR", "GB", "CA", "IT", "ES", "RU", "MD"];
+    
     public CountryValidator()
     {
-        RuleFor(d => d.Name)
-            .NotNull().WithMessage(ValidationMessage.NotNull)
-            .NotEmpty().WithMessage(ValidationMessage.NotEmpty)
-            .Length(2, 100).WithMessage(ValidationMessage.WrongLength)
-            .Matches(@"^([a-zA-Z]|\s)*$").WithMessage(ValidationMessage.WrongFormat);
-        RuleFor(d => d.Code)
-            .Length(2, 2).WithMessage(ValidationMessage.WrongExactLength) //Не понял как при Length(2) добавить в сообщение требуемую длину.
-            .Matches("^[A-Z]*$").WithMessage(ValidationMessage.WrongFormat)
-            .When(c => c.Code != null);
+        // Валидация для имени
+        RuleFor(c => c.Name)
+            .NotEmpty().WithMessage(ValidationMessage.RequiredField)
+            .Length(2, 100).WithMessage(ValidationMessage.LengthField)
+            .Matches(@"^[A-Za-z\s]+$").WithMessage(ValidationMessage.OnlyLettersAndSpaces);
+
+        // Валидация для кода
+        RuleFor(c => c.Code)
+            .NotEmpty().WithMessage(ValidationMessage.RequiredField)
+            .Length(2).WithMessage(ValidationMessage.ExactLengthField)
+            .Matches(@"^[A-Z]{2}$").WithMessage(ValidationMessage.OnlyUppercaseLetters)
+            .Must(code => ValidIsoCodes.Contains(code)).WithMessage(ValidationMessage.ValidCountryCode);
     }
 }
